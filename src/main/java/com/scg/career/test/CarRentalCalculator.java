@@ -22,7 +22,6 @@ public class CarRentalCalculator {
 
 	public void calculateLowestCost(List<Car> combinations, int seats) {
 		if (seats < 1) {
-//			System.out.println(combinations);
 			if (bestCombinations.size() == 0 || calculateCost(combinations) < calculateCost(bestCombinations.stream().findFirst().orElseThrow(IllegalArgumentException::new))) {
 				bestCombinations.clear();
 				Collections.sort(combinations);
@@ -38,7 +37,6 @@ public class CarRentalCalculator {
 				calculateLowestCost(newCombinations, seats - car.getSeats());
 			}
 		}
-//		throw new UnsupportedOperationException();
 	}
 	
 	public void displayBestCombinations() {
@@ -113,11 +111,6 @@ public class CarRentalCalculator {
 			return true;
 		}
 
-		@Override
-		public String toString() {
-			return "Car [size=" + size + "]";
-		}
-
 		private CarRentalCalculator getOuterType() {
 			return CarRentalCalculator.this;
 		}
@@ -129,17 +122,9 @@ public class CarRentalCalculator {
 	}
 	
 	public static void main(String[] args) {
-//		for (int i = 0; i < 60; ++i) {
-//			System.out.printf("==================%d seats==================%n", i);
-//			CarRentalCalculator carRentalCalculator = new CarRentalCalculator();
-//			carRentalCalculator.calculateLowestCost(new ArrayList<>(), i);
-//			carRentalCalculator.displayBestCombinations();
-//			System.out.println("============================================");
-//		}
 		CarRentalCalculator carRentalCalculator = new CarRentalCalculator();
-		carRentalCalculator.calculateLowestCost(new ArrayList<>(), 6);
+		carRentalCalculator.calculateLowestCost(new ArrayList<>(), 50);
 		carRentalCalculator.displayBestCombinations();
-//		System.out.println(carRentalCalculator.getBestCombination());
 	}
 
 }
